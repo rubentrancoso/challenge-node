@@ -1,5 +1,6 @@
 var restify = require('restify');
 var restifyPlugins = require('restify').plugins;
+var jwt = require('jsonwebtoken');
 
 var config = require('config').get(process.env.NODE_ENV);
 
@@ -16,6 +17,31 @@ server.use(restifyPlugins.queryParser({
 	mapParams : true
 }));
 server.use(restifyPlugins.fullResponse());
+
+server.use(function(req, res, next) {
+	var secure = [ "/profile" ];
+
+	for ( var i in secure) {
+		if (req.path().startsWith(secure[i])) {
+			var token = req.headers['x-access-token'];
+			if (!token) {
+				var statusCode = 401;
+				var message = {	message : 'No token provided.' };
+				res.send(statusCode, message);
+				return;
+			}
+
+			jwt.verify(token, config.bcrypt_secret, function(err, decoded) {
+				if (err) {
+					res.send(401, {	message : 'Unauthorized' });
+					return;
+				}
+			});
+			break;
+		}
+	}
+	next();
+});
 
 var fn_start = function() {
 	console.log('starting rest server');
