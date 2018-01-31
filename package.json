@@ -1,0 +1,29 @@
+{
+  "name": "challenge-node",
+  "version": "0.1.0",
+  "description": "challenge-node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
+  },
+  "repository": "",
+  "keywords": [
+    "node.js",
+    "eclipse",
+    "nodeclipse"
+  ],
+  "author": "",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "jsonwebtoken": "^8.1.1",
+    "mongoose": "^5.0.2",
+    "promise": "^8.0.1",
+    "restify": "^6.3.4",
+    "restify-plugins": "^1.6.0",
+    "uuid": "^3.2.1"
+  }
+}
