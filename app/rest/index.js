@@ -5,8 +5,8 @@ var jwt = require('jsonwebtoken');
 var config = require('config').get(process.env.NODE_ENV);
 
 var server = restify.createServer({
-	name : 'Hello World!',
-	version : '1.0.0'
+	name : config.appname,
+	version : config.appversion
 });
 
 server.use(restifyPlugins.jsonBodyParser({
