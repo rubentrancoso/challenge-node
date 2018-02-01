@@ -35,7 +35,7 @@ module.exports = function(server) {
 				return;
 			}
 			console.log('password matches')
-			var payload = {	email : dbuser.email };
+			var payload = {	'uuid' : dbuser.uuid, 'email' : dbuser.email }; 
 			var newToken = jwt.sign(payload, config.bcrypt_secret, { expiresIn : config.jwt.expires });
 			var hashedToken = bcryptjs.hashSync(newToken, 8);
 			dbuser.token = hashedToken;

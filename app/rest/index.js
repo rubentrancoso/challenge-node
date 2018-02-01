@@ -19,7 +19,7 @@ server.use(restifyPlugins.queryParser({
 server.use(restifyPlugins.fullResponse());
 
 server.use(function(req, res, next) {
-	var secure = [ "/profile" ];
+	var secure = [ "/user/profile" ];
 
 	for ( var i in secure) {
 		if (req.path().startsWith(secure[i])) {
@@ -36,6 +36,8 @@ server.use(function(req, res, next) {
 					res.send(401, {	message : 'Unauthorized' });
 					return;
 				}
+				req.payload = decoded;
+				console.log('security filter : ' + JSON.stringify(decoded));
 			});
 			break;
 		}
