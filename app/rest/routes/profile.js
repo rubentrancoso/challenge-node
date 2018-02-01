@@ -6,7 +6,7 @@ module.exports = function(server) {
     server.get('/user/profile/:uuid', function(req, res, next) {
     	console.log('payload: ' + JSON.stringify(req.payload));
     	var publicmask = {'_id' : 0, 'uuid' : 1, 'name' : 1};
-    	var privatemask = {'_id' : 0, '__v' : 0};
+    	var privatemask = {'_id' : 0, 'password': 0, 'token': 0,'__v' : 0};
     	var mask = publicmask;
     	if(req.params.uuid===req.payload.uuid) {
     		mask = privatemask;
