@@ -3,6 +3,7 @@ var config = {
 		name: 'default',
 		appname: 'user-api',
 		appversion: '1.0.0',
+		appurl: 'http://localhost:8080',
 		bcrypt_secret: '123456',
 		mongodb : {
 			host: 'localhost',

@@ -48,6 +48,7 @@ var fn_start = function() {
 	server.listen(config.rest.port, function() {
 		require('./routes/hello')(server);
 		require('./routes/register')(server);
+		require('./routes/confirmation')(server);
 		require('./routes/profile')(server);
 		require('./routes/login')(server);
 		console.log('server %s listening at %s', server.name, server.url);

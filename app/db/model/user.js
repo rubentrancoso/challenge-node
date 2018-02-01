@@ -14,8 +14,10 @@ var userSchema = new Schema({
 		type : String,
 		required : true
 	},
-	created_at : Date,
-	updated_at : Date
+	confirmed : Boolean,
+	created_at : { type: Date, default: Date.now },
+	updated_at : Date,
+	confirmed_at: Date
 });
 
 // the schema is useless so far

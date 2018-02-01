@@ -15,41 +15,52 @@ module.exports = function(server) {
 		var password = req.body.password;
 		
 		if(isEmpty(username) || isEmpty(password)) {
-			res.send(401,{ message : 'Unauthorized' });
+			res.send(401,{ message : 'Unauthorized(-1)' });
 			next();
 			return;
 		}
 
-		var user = null;
-
-		User.findOne({"email" : username}).then(function(doc) {
-			user = doc;
-			if(!bcryptjs.compareSync(password, user.password)) {
-				res.send(401,{ message : 'Unauthorized' });
+		console.log('going to find user - (' + username + ')');
+		User.findOne({"email" : username}).then( function(dbuser) {
+			if(!dbuser.confirmed) {
+				res.send(401,{ message : 'Unauthorized(0) - user not confirmed' });
 				next();
 				return;
 			}
-			var payload = {	email : username };
+			
+			console.log('checking password for user - ' + dbuser);
+			if(!bcryptjs.compareSync(password, dbuser.password)) {
+				res.send(401,{ message : 'Unauthorized(1)' });
+				next();
+				return;
+			}
+			console.log('password matches')
+			var payload = {	email : dbuser.email };
 			var newToken = jwt.sign(payload, config.bcrypt_secret, { expiresIn : config.jwt.expires });
 			var hashedToken = bcryptjs.hashSync(newToken, 8);
-			user.token = hashedToken;
-			user.save().then(function(doc) {
+			dbuser.token = hashedToken;
+			console.log('going to save user')
+			dbuser.save().then(function(doc) {
 				User.findOne({"email" : username}, {'_id' : 0, 'password' : 0, '__v' : 0}).then(function(doc) {
 					doc.token = newToken;
+					console.log('login sucessful - [' + doc + ']')
 					res.send(200, doc);
 					next();
 					return;
 				}).catch(function(error) {
+					console.log('Unauthorized(2) - [' + error + ']')
 					res.send(401,{ message : 'Unauthorized' });
 					next();
 					return;
 				});
 			}).catch(function(error) {
+				console.log('Unauthorized(3) - [' + error + ']')
 				res.send(401,{ message : 'Unauthorized' });
 				next();
 				return;
 			});
 		}).catch(function(error) {
+			console.log('Unauthorized(4) - [' + error + ']')
 			res.send(401,{ message : 'Unauthorized' });
 			next();
 			return;
