@@ -14,13 +14,13 @@ module.exports = function(server) {
 			return;
 		}
 
-		var payload = {	email : req.body.email };
+		var newUuid = uuidv4();
+		var payload = {	'uuid' : newUuid, 'email' : req.body.email };
 		var hashedPassword = bcryptjs.hashSync(req.body.password, 8);
-		var newToken = jwt.sign(payload, config.bcrypt_secret, { expiresIn : config.jwt.expires });
 		var newConfirmationToken = jwt.sign(payload, config.bcrypt_secret, { expiresIn : config.jwt.expires });
 		
 		var user = new User({
-			uuid : uuidv4(),
+			uuid : newUuid,
 			name : req.body.name,
 			email : req.body.email,
 			password : hashedPassword,
