@@ -1,0 +1,539 @@
+{
+	"info": {
+		"name": "Node App",
+		"_postman_id": "cfc2d957-1b65-59b8-44f3-2050c86788c3",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"token\", jsonData.token);",
+							"postman.setEnvironmentVariable(\"uuid\", jsonData.uuid);",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"João da Silva\",\n    \"email\": \"joao34@silva.org\",\n    \"password\": \"hunter2\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"register"
+					]
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "2699a48a-37c9-4c97-a819-ac13858309e9",
+					"name": "register cloud",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"João da Silva\",\n    \"email\": \"joao@silva.org\",\n    \"password\": \"hunter2\",\n    \"phones\": [\n        {\n            \"number\": \"987654321\",\n            \"ddd\": \"21\"\n        }\n    ]\n\t\n}"
+						},
+						"url": {
+							"raw": "https://concrete.doteva.com/register",
+							"protocol": "https",
+							"host": [
+								"concrete",
+								"doteva",
+								"com"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json;charset=UTF-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 12 Nov 2017 00:43:33 GMT",
+							"description": ""
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "nginx/1.12.1",
+							"description": ""
+						},
+						{
+							"name": "strict-transport-security",
+							"key": "strict-transport-security",
+							"value": "max-age=15768000; includeSubDomains; preload;",
+							"description": ""
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": ""
+						},
+						{
+							"name": "x-application-context",
+							"key": "x-application-context",
+							"value": "challenge:8080",
+							"description": ""
+						},
+						{
+							"name": "x-content-type-options",
+							"key": "x-content-type-options",
+							"value": "nosniff",
+							"description": ""
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": ""
+						},
+						{
+							"name": "x-robots-tag",
+							"key": "x-robots-tag",
+							"value": "none",
+							"description": ""
+						},
+						{
+							"name": "x-xss-protection",
+							"key": "x-xss-protection",
+							"value": "1; mode=block",
+							"description": ""
+						}
+					],
+					"cookie": [],
+					"responseTime": "913",
+					"body": "{\"created\":1510447413788,\"modified\":1510447413788,\"id\":\"c7ca1755405a4048a0062f8179606b83\",\"name\":\"João da Silva\",\"email\":\"joao@silva.org\",\"password\":\"$2a$11$aPQDq8a3Qx2mtba6PatHReDzaSKu8zOtAbO8x6CL4IbRMV3YcU97G\",\"phones\":[{\"ddd\":21,\"number\":987654321}],\"token\":\"15da56b3dad24fd2aeec3b56a9c09cda\"}"
+				}
+			]
+		},
+		{
+			"name": "confirmation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"token\", jsonData.token);",
+							"postman.setEnvironmentVariable(\"uuid\", jsonData.uuid);",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"João da Silva\",\n    \"email\": \"joao34@silva.org\",\n    \"password\": \"hunter2\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/user/confirmation/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvYW9Ac2lsdmEub3JnIiwiaWF0IjoxNTE3NDQ4MDMyLCJleHAiOjE1MTc1MzQ0MzJ9.33y1zCRAuc1ysyMXMLODMI-rucnwRiyx5eEDRPV0gRs",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"confirmation",
+						"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvYW9Ac2lsdmEub3JnIiwiaWF0IjoxNTE3NDQ4MDMyLCJleHAiOjE1MTc1MzQ0MzJ9.33y1zCRAuc1ysyMXMLODMI-rucnwRiyx5eEDRPV0gRs"
+					]
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "e5e2a882-c4ec-4e71-aeda-7e486534ccdc",
+					"name": "register cloud",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"João da Silva\",\n    \"email\": \"joao@silva.org\",\n    \"password\": \"hunter2\",\n    \"phones\": [\n        {\n            \"number\": \"987654321\",\n            \"ddd\": \"21\"\n        }\n    ]\n\t\n}"
+						},
+						"url": {
+							"raw": "https://concrete.doteva.com/register",
+							"protocol": "https",
+							"host": [
+								"concrete",
+								"doteva",
+								"com"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json;charset=UTF-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 12 Nov 2017 00:43:33 GMT",
+							"description": ""
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "nginx/1.12.1",
+							"description": ""
+						},
+						{
+							"name": "strict-transport-security",
+							"key": "strict-transport-security",
+							"value": "max-age=15768000; includeSubDomains; preload;",
+							"description": ""
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": ""
+						},
+						{
+							"name": "x-application-context",
+							"key": "x-application-context",
+							"value": "challenge:8080",
+							"description": ""
+						},
+						{
+							"name": "x-content-type-options",
+							"key": "x-content-type-options",
+							"value": "nosniff",
+							"description": ""
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": ""
+						},
+						{
+							"name": "x-robots-tag",
+							"key": "x-robots-tag",
+							"value": "none",
+							"description": ""
+						},
+						{
+							"name": "x-xss-protection",
+							"key": "x-xss-protection",
+							"value": "1; mode=block",
+							"description": ""
+						}
+					],
+					"cookie": [],
+					"responseTime": "913",
+					"body": "{\"created\":1510447413788,\"modified\":1510447413788,\"id\":\"c7ca1755405a4048a0062f8179606b83\",\"name\":\"João da Silva\",\"email\":\"joao@silva.org\",\"password\":\"$2a$11$aPQDq8a3Qx2mtba6PatHReDzaSKu8zOtAbO8x6CL4IbRMV3YcU97G\",\"phones\":[{\"ddd\":21,\"number\":987654321}],\"token\":\"15da56b3dad24fd2aeec3b56a9c09cda\"}"
+				}
+			]
+		},
+		{
+			"name": "profile/uuid",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiODFhNmI1YWEtMWYwNS00ZWRhLTlkZTgtZDdjZTcwZTEyYmVmIiwiZW1haWwiOiIxMjM0NTY3QGVtYWlsIiwiaWF0IjoxNTE3NDYwNjk0LCJleHAiOjE1MTc1NDcwOTR9.skpHaTeybsXZEaB3F_9QgsIDCDMNAVxjx3Ugh-t9Kec"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/user/profile/81a6b5aa-1f05-4eda-9de8-d7ce70e12bef",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"profile",
+						"81a6b5aa-1f05-4eda-9de8-d7ce70e12bef"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/profile/{{uuid}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"profile",
+						"{{uuid}}"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"token\", jsonData.token);",
+							"postman.setEnvironmentVariable(\"uuid\", jsonData.id);",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"joao3@silva.org\",\n    \"password\": \"123456\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "787e3817-a968-42fc-888f-8c4371bb8b02",
+					"name": "Login cloud",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"joao@silva.org\",\n    \"password\": \"hunter2\"\n}"
+						},
+						"url": {
+							"raw": "https://concrete.doteva.com/login",
+							"protocol": "https",
+							"host": [
+								"concrete",
+								"doteva",
+								"com"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "close",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json;charset=UTF-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sat, 11 Nov 2017 21:54:39 GMT",
+							"description": ""
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": ""
+						}
+					],
+					"cookie": [],
+					"responseTime": "46",
+					"body": "{\"timestamp\":1510437279594,\"status\":500,\"error\":\"Internal Server Error\",\"exception\":\"java.lang.NullPointerException\",\"message\":\"No message available\",\"path\":\"/login\"}"
+				},
+				{
+					"id": "f08840a2-d031-4743-ac9d-89d4be835dfc",
+					"name": "Login local",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"joao@silva.org\",\n    \"password\": \"hunter2\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "close",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json;charset=UTF-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sat, 11 Nov 2017 21:54:39 GMT",
+							"description": ""
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": ""
+						}
+					],
+					"cookie": [],
+					"responseTime": "46",
+					"body": "{\"timestamp\":1510437279594,\"status\":500,\"error\":\"Internal Server Error\",\"exception\":\"java.lang.NullPointerException\",\"message\":\"No message available\",\"path\":\"/login\"}"
+				}
+			]
+		},
+		{
+			"name": "hello",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/hello",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"hello"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
