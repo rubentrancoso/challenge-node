@@ -44,6 +44,7 @@ module.exports = function(server) {
 							var message = { message : 'user registration sucessful' };
 							doc.token = Buffer.from(doc.token).toString('base64');
 				   		    console.log('user registration sucessful [' + doc + ']');
+				   		    console.log('confirmation token is [' + doc.token + ']');
 							res.send(200, message);
 						}).catch(function(error){
 							var statusCode = 500;
